@@ -750,7 +750,7 @@ body {
   cursor: pointer;
 }
 
-/* responsive */
+
 @media (max-width: 600px) {
   .categories-grid {
     grid-template-columns: 1fr;
