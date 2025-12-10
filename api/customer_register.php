@@ -1,57 +1,65 @@
 <?php
-    header("Content-Type: application/json");
-    include("conn.php"); 
+session_start();
+include "conn.php"; // assuming this is in the same folder as backend
 
-    $data = $_POST; 
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // Collect form data
+    $fullName = trim($_POST["customer_fullName"] ?? '');
+    $phone = trim($_POST["customer_phoneNum"] ?? '');
+    $gender = trim($_POST["customer_gender"] ?? '');
+    $email = trim($_POST["customer_email"] ?? '');
+    $password = $_POST["customer_password"] ?? '';
+    $confirmPassword = $_POST["customer_confirm_password"] ?? '';
+    $address = trim($_POST["customer_address"] ?? '');
 
-    $requiredFields = ["customer_fullName", "customer_phoneNum", "customer_gender", "customer_email", "customer_password"];
-    foreach ($requiredFields as $field) {
-        if (!isset($data[$field]) || empty($data[$field])) {
-            echo json_encode(["success" => false, "message" => "Missing field: $field"]);
-            exit();
-        }
+    // Validate required fields
+    if (!$fullName || !$phone || !$gender || !$email || !$password || !$confirmPassword) {
+        header("Location: ../customer-signup.php?error=Please fill in all required fields");
+        exit;
     }
 
-    $fullName = $data["customer_fullName"];
-    $phone = $data["customer_phoneNum"];
-    $gender = $data["customer_gender"];
-    $email = $data["customer_email"];
-    $password = password_hash($data["customer_password"], PASSWORD_DEFAULT);
+    // Check password confirmation
+    if ($password !== $confirmPassword) {
+        header("Location: ../customer-signup.php?error=Passwords do not match");
+        exit;
+    }
 
-    $address = isset($data["customer_address"]) ? $data["customer_address"] : null;
-
+    // Check if email already exists
     $sqlCheck = "SELECT * FROM customers WHERE customer_email = ?";
     $stmtCheck = $conn->prepare($sqlCheck);
     $stmtCheck->bind_param("s", $email);
     $stmtCheck->execute();
     $resultCheck = $stmtCheck->get_result();
+
     if ($resultCheck->num_rows > 0) {
-        echo json_encode(["success" => false, "message" => "Email already exists"]);
-        exit();
+        header("Location: ../customer-signup.php?error=Email already exists");
+        exit;
     }
 
+    // Hash password
+    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+    // Insert new customer
     $sqlInsert = "INSERT INTO customers (customer_fullName, customer_phoneNum, customer_gender, customer_email, customer_password, customer_address) VALUES (?, ?, ?, ?, ?, ?)";
     $stmtInsert = $conn->prepare($sqlInsert);
-    $stmtInsert->bind_param("ssssss", $fullName, $phone, $gender, $email, $password, $address);
+    $stmtInsert->bind_param("ssssss", $fullName, $phone, $gender, $email, $hashedPassword, $address);
 
     if ($stmtInsert->execute()) {
-        echo json_encode([
-            "success" => true,
-            "message" => "Registration successful",
-            "user" => [
-                "id" => $stmtInsert->insert_id,
-                "fullName" => $fullName,
-                "email" => $email
-            ]
-        ]);
+        // Success → redirect to login page
+        header("Location: ../login.php");
+        exit;
     } else {
-        echo json_encode(["success" => false, "message" => "Registration failed"]);
+        // Insert failed
+        header("Location: ../customer-signup.php?error=Registration failed. Please try again.");
+        exit;
     }
 
-
+    // Close statements and connection
     $stmtCheck->close();
     $stmtInsert->close();
     $conn->close();
-    ?>
-
-
+} else {
+    // If not POST request, redirect to signup page
+    header("Location: ../customer-signup.php");
+    exit;
+}
