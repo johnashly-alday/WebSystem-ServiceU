@@ -1,0 +1,158 @@
+:root {
+  --primary-color: #137594;
+  --card-bg-color: #ffffff;
+  --light-card-bg-color: #f8f9fb;
+  --text-dark: #333333;
+  --text-medium: #666666;
+  --text-light: #999999;
+  --amount-color: #ff9800;
+  --icon-bg-color: #e0f7fa;
+  --icon-color: #00bcd4;
+  --border-radius: 12px;
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+/* --- Base Layout & Fonts --- */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f2f5;
+  margin: 0;
+  padding: 20px;
+}
+.earnings-container {
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 0 15px;
+  background-color: #ffffff;
+}
+/* --- Header Styling --- */
+.earnings-header {
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 1.8em;
+  font-weight: 700;
+  width: 100;
+  padding: 15px 20px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow);
+}
+
+/* --- Card Base Styling --- */
+.card {
+  border-radius: var(--border-radius);
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  box-shadow: var(--shadow);
+  background-color: var(--card-bg-color);
+}
+.card-label {
+  font-size: 0.9em;
+  color: var(--text-medium);
+  margin: 0 0 5px 0;
+}
+.card-amount {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0;
+}
+/* --- Total Earnings Card Specifics --- */
+.total-earnings {
+  background-color: var(--light-card-bg-color);
+  text-align: center;
+  padding: 25px 20px;
+  margin-bottom: 20px;
+}
+.total-earnings .card-amount.total {
+  font-size: 2.5em;
+  font-weight: 800;
+  color: var(--text-dark);
+}
+/* --- Weekly/Monthly Summary Row --- */
+.summary-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+.summary-card {
+  flex: 1;
+  text-align: left;
+  background-color: var(--card-bg-color);
+}
+.summary-card .card-amount {
+  font-size: 1.3em;
+}
+/* --- Payment History Header --- */
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 15px;
+}
+.history-header h2 {
+  font-size: 1.2em;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin: 0;
+}
+.view-all-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: 0.9em;
+  font-weight: 500;
+}
+/* --- Payment History Items --- */
+.history-item {
+  display: flex;
+  align-items: center;
+  background-color: var(--light-card-bg-color);
+  border-radius: var(--border-radius);
+  padding: 15px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+}
+.icon-chip {
+  background-color: var(--icon-bg-color);
+  border-radius: 8px;
+  padding: 8px;
+  line-height: 0;
+  margin-right: 15px;
+}
+.chip-icon {
+  width: 24px;
+  height: 24px;
+}
+.chip-icon path[fill] {
+  fill: var(--icon-color);
+}
+.chip-icon path[stroke] {
+  stroke: var(--icon-color);
+}
+.details {
+  flex-grow: 1;
+}
+.details .title {
+  font-size: 1em;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin: 0 0 3px 0;
+}
+.details .subtitle {
+  font-size: 0.85em;
+  color: var(--text-medium);
+  margin: 0;
+}
+.transaction-info {
+  text-align: right;
+  margin-left: 10px;
+}
+.transaction-info .amount {
+  font-size: 1em;
+  font-weight: 700;
+  color: var(--amount-color);
+  margin: 0 0 3px 0;
+}
+.transaction-info .date {
+  font-size: 0.85em;
+  color: var(--text-light);
+  margin: 0;
+}

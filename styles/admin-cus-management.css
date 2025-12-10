@@ -1,0 +1,379 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter';
+    background-color: #ffffff;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: auto;
+    margin: 0 auto;
+    background: white;
+    min-height: 100vh;
+    position: relative;
+}
+
+.header {
+    background: #137594;
+    color: white;
+    padding: 30px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-edit {
+    justify-content: flex-start;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.back-arrow {
+    width: 24px;
+    height: 24px;
+}
+
+.back-button {
+    background: white;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.back-button svg {
+    stroke: black;
+}
+
+.back-button:hover {
+    transform: translateX(-3px);
+}
+
+.header h1 {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.search-container {
+    width: 260px;
+    height: 44px;
+    background: white;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 16px;
+}
+
+.search-input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    font-family: 'Inter';
+    color: #333;
+    background: transparent;
+    cursor: text;
+}
+
+.search-icon {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+}
+
+.content {
+    padding: 40px;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.filter-btn {
+    padding: 10px 24px;
+    border-radius: 25px;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: #78788029;
+    color: #1E1E1EBF;
+}
+
+.filter-btn.active {
+    background: #137594;
+    color: white;
+}
+
+.customer-card {
+    background: #f0f4f8;
+    border-radius: 16px;
+    padding: 20px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+}
+
+.customer-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.customer-avatar {
+    width: 100px;
+    height: 100px;
+    background: #55A3C0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 50px;
+    font-weight: 700;
+    color: white;
+}
+
+.customer-info {
+    flex: 1;
+}
+
+.customer-info h3 {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.customer-info .email,
+.customer-info .last-online {
+    font-size: 14px;
+    color: #A9A9A9;
+}
+
+.status-badge {
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.status-badge.active {
+    background: #209D0F26;
+    color: #09B285;
+}
+
+.status-badge.inactive {
+    background: #F5474A54;
+    color:#FF0000D9;
+}
+
+.menu-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    font-size: 24px;
+    color: #137594;
+    cursor: pointer;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.sortBar {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.verification-card {
+    background: #eaf3f5;
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+    transition: 0.3s ease;
+}
+
+.verification-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.user-avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 12px;
+    background: #5BA4C1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: 700;
+    color: white;
+}
+
+.user-info h3 {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.user-info .email,
+.user-info .submitted {
+    font-size: 14px;
+    color: #A9A9A9;
+}
+
+.expand-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.dropDown {
+    width: 20px;
+    height: 20px;
+}
+
+.card-body {
+    margin-top: 20px;   
+    padding-top: 12px;    
+    border-top: 1px solid #e0e0e0;
+}
+
+.document-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: white;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.doc-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.document-item img {
+    width: 20px;
+    height: 20px;
+}
+
+.doc-name {
+    font-size: 14px;
+    color: #0000007A;
+}
+
+.view-btn {
+    background: transparent;
+    border: none;
+    color: #137594;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.reject-btn {
+    background: #FF0000;
+    color: white;
+    border: none;
+    padding: 12px 32px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.reject-btn:hover {
+    background: #cc0000;
+}
+
+.approve-btn {
+    background: #137594;
+    color: white;
+    border: none;
+    padding: 12px 32px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.approve-btn:hover {
+    background: #0d5670;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 60px; 
+    right: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+    overflow: hidden;
+    min-width: 200px;
+    display: none; 
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.edit-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.15s ease;
+}
+
+.edit-link:hover {
+    background: #f0f4f8;
+}
+
+.edit-icon {
+    width: 20px;
+    height: 20px;
+}
+

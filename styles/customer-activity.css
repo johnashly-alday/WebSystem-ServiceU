@@ -1,0 +1,418 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #f5f7fa;
+}
+
+/* Page wrapper like Settings screen */
+.page-container {
+  max-width: 1200px;
+  margin: 30px auto;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+}
+
+.header {
+  background: #0e7490;
+  padding: 26px;
+}
+
+.header h1 {
+  font-size: 28px;
+  color: white;
+  font-weight: 700;
+}
+
+.content {
+  padding: 24px;
+}
+
+/* Tabs */
+.filter-tabs {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.tab {
+  background: #d4d4d4;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 24px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  color: #555;
+  transition: 0.2s;
+}
+
+.tab.active {
+  background: #0e7490;
+  color: white;
+}
+
+/* Category */
+.category-section {
+  margin-bottom: 24px;
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+.category-title {
+  color: #0e7490;
+  font-weight: 700;
+}
+
+.category-icon {
+  transition: 0.3s;
+}
+
+.category-icon.collapsed {
+  transform: rotate(-90deg);
+}
+
+/* Activity item */
+.activity-item {
+  background: #fafafa;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.activity-icon {
+  width: 56px;
+  height: 56px;
+  margin-right: 16px;
+  background: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+}
+
+.activity-icon img {
+  max-width: 50px;
+  max-height: 50px;
+}
+
+.activity-content {
+  flex: 1;
+}
+
+.activity-content a {
+  text-decoration: none;
+  color: #f59e0b;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.activity-content a:hover {
+  color: #d97706;
+}
+
+.activity-name {
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.activity-time {
+  font-size: 13px;
+  color: #777;
+  margin-bottom: 4px;
+}
+
+.activity-right {
+  text-align: right;
+}
+
+.activity-price {
+  color: #f59e0b;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.activity-button,
+.cancel-button {
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.activity-button {
+  background: #0e7490;
+  color: white;
+}
+.cancel-button {
+  background: #ef4444;
+  color: white;
+}
+
+/* Modal */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-overlay.active {
+  display: flex;
+}
+
+.modal {
+  background: white;
+  padding: 28px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 380px;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.modal-button {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.modal-button-cancel {
+  background: #e5e7eb;
+}
+.modal-button-confirm {
+  background: #ef4444;
+  color: white;
+}
+
+/* Rating Modal Styles */
+.rating-modal {
+  background: white;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 450px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.rating-modal-header {
+  background: #0e7490;
+  color: white;
+  padding: 20px 24px;
+  text-align: center;
+  position: relative;
+}
+
+.rating-modal-header h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.rating-modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.rating-modal-body {
+  padding: 24px;
+}
+
+.technician-info {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.technician-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #0e7490;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  margin: 0 auto 12px;
+}
+
+.technician-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 4px;
+}
+
+.service-type {
+  font-size: 14px;
+  color: #666;
+}
+
+.rating-section {
+  margin-bottom: 24px;
+}
+
+.rating-section-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 12px;
+}
+
+.star-rating {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.star {
+  font-size: 40px;
+  color: #d1d5db;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.star:hover,
+.star.active {
+  color: #fbbf24;
+  transform: scale(1.1);
+}
+
+.comment-section {
+  margin-bottom: 24px;
+}
+
+.comment-textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 14px;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.comment-textarea:focus {
+  border-color: #0e7490;
+}
+
+.comment-hint {
+  font-size: 12px;
+  color: #999;
+  margin-top: 6px;
+}
+
+.submit-rating-button {
+  width: 100%;
+  padding: 14px;
+  background: #0e7490;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.submit-rating-button:hover {
+  background: #0c5f78;
+}
+
+.submit-rating-button:disabled {
+  background: #d1d5db;
+  cursor: not-allowed;
+}
+
+/* Success Modal Styles */
+.success-modal {
+  background: white;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 350px;
+  padding: 40px 30px;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.success-icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px;
+  background: linear-gradient(135deg, #0e7490, #0c5f78);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+}
+
+.success-modal h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 12px;
+}
+
+.success-modal p {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.back-home-button {
+  width: 100%;
+  padding: 14px;
+  background: #0e7490;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.back-home-button:hover {
+  background: #0c5f78;
+}

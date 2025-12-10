@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image" href="img/logo" />
+    <title>Service-U - Choose Your Profile</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .container {
+        background: white;
+        border-radius: 20px;
+        padding: 50px;
+        max-width: 1200px;
+        width: 100%;
+        border: black 0.5px solid;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+      .title-container {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .logo-header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 15px;
+        margin-bottom: 30px;
+      }
+
+      .logo-header img {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+      }
+
+      .service-u-title {
+        font-size: 48px;
+        font-weight: bold;
+        color: #137594;
+        margin: 0;
+      }
+
+      .title {
+        font-size: 32px;
+        font-weight: bold;
+        color: #1e293b;
+        margin-bottom: 10px;
+      }
+
+      .logo-icon {
+        font-size: 32px;
+      }
+
+      .logo-text {
+        font-size: 40px;
+        font-weight: bold;
+      }
+
+      .logo-text .service {
+        color: #137594;
+      }
+
+      .logo-text .u {
+        color: #137594;
+      }
+
+      .logo-text a {
+        text-decoration: none;
+      }
+
+      .title {
+        font-size: 32px;
+        font-weight: bold;
+        color: #1e293b;
+        margin-bottom: 10px;
+        text-align: center;
+      }
+
+      .subtitle {
+        color: #64748b;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .profiles-container {
+        display: flex;
+        gap: 20px;
+        align-items: stretch;
+      }
+
+      .profile-card {
+        background: white;
+        border: 2px solid #e2e8f0;
+        border-radius: 16px;
+        padding: 30px;
+        flex: 1;
+        transition: all 0.3s;
+        cursor: pointer;
+
+        flex-direction: column;
+      }
+
+      .profile-header {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 15px;
+      }
+
+      .profile-icon {
+        font-size: 40px;
+      }
+
+      .profile-icon img {
+        width: 30px;
+        height: 30px;
+        object-fit: contain;
+      }
+
+      .profile-title {
+        font-size: 24px;
+        font-weight: 600;
+        color: #0891b2;
+      }
+
+      .profile-description {
+        color: #64748b;
+        margin-bottom: 20px;
+        line-height: 1.5;
+        flex-grow: 1;
+      }
+
+      .sign-up-button {
+        width: 100%;
+        background: #fbbf24;
+        color: #1e293b;
+        border: none;
+        padding: 14px 28px;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .sign-up-button a {
+        text-decoration: none;
+        color: #1e293b;
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 30px 20px;
+        }
+
+        .title {
+          font-size: 26px;
+        }
+
+        .profile-title {
+          font-size: 20px;
+        }
+
+        .profiles-container {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="title-container">
+        <div class="logo-header">
+          <img src="img/logo.png" alt="" />
+          <h1 class="service-u-title">SERVICE-U</h1>
+        </div>
+        <h1 class="title">Choose Your Profile</h1>
+        <p class="subtitle">Select the type of account that you want.</p>
+      </div>
+
+      <div class="profiles-container">
+        <div class="profile-card" onclick="signUp('customer')">
+          <div class="profile-header">
+            <span class="profile-icon">
+              <img src="img/customer.png" alt="" />
+            </span>
+            <h2 class="profile-title">Customer</h2>
+          </div>
+          <p class="profile-description">
+            Hire services and find technicians in your area.
+          </p>
+          <button class="sign-up-button">
+            <a href="customer/customer-signup.php">Sign Up as Customer</a>
+          </button>
+        </div>
+
+        <div class="profile-card" onclick="signUp('technician')">
+          <div class="profile-header">
+            <span class="profile-icon">
+              <img src="img/mechanic.png" alt="" />
+            </span>
+            <h2 class="profile-title">Technician</h2>
+          </div>
+          <p class="profile-description">
+            Offer your services and find bookings.
+          </p>
+          <button class="sign-up-button">
+            <a href="repairer/repairer-signup.php">Sign Up as Repairer</a>
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

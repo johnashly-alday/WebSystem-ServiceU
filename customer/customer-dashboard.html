@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image" href="../img/logo">
+    <link rel="stylesheet" href="../styles/customer-dashboard.css">
+    <title>ServiceU - Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo-container">
+            <img class="logoimg" src="../img/logo.png" alt="">
+            <div class="logo">Service-U</div>
+        </div>
+        <nav class="nav-links">
+            <a href="customer-dashboard.html">Home</a>
+            <a href="customer-activity.html">Activity</a>
+            <a href="customer-booking.html">Book</a>
+            <a href="customer-settings.html">Settings</a>
+        </nav>
+        <div class="profile">
+            <img src="../img/tristan.jpg" alt="Profile" onclick="openModal()">
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-row">
+
+            <div class="hero-left">
+                <h2>Find Your Technician Expert and Services</h2>
+
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="icon">
+                            <img src="../img/repairing.png" alt="">
+                        </div>
+                        <h4>Plumbing</h4>
+                        <p>Leaky pipes, clogged drains</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="icon">
+                            <img src="../img/chip.png" alt="">
+                        </div>
+                        <h4>Hardware</h4>
+                        <p>Repair, upgrade and component replacements</p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="icon">
+                            <img src="../img/flash.png" alt="">
+                        </div>
+                        <h4>Electrical</h4>
+                        <p>Wiring and Fixture Installation</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="hero-right">
+                <div class="search-box">
+                    <input type="text" placeholder="Search for services and technicians">
+                    <button>🔍</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    
+    <section class="repairers-container">
+        <div class="section-header">
+            <h3>Top Rated Repairers</h3>
+            <a href="#">View All</a>
+        </div>
+
+        <div class="repairer-grid">
+            <div class="repairer-card">
+                <img src="../img/Juan.png" alt="Technician">
+                <h4>Juan Dela Cruz</h4>
+                <p>Electrical</p>
+                <span class="rating">⭐ 4.5</span>
+            </div>
+
+            <div class="repairer-card">
+                <img src="../img/Jose.png" alt="Technician">
+                <h4>Jose Mari</h4>
+                <p>Plumbing</p>
+                <span class="rating">⭐ 4.7</span>
+            </div>
+
+            <div class="repairer-card">
+                <img src="../img/luis.jpg" alt="Technician">
+                <h4>Luis Fernando</h4>
+                <p>Hardware</p>
+                <span class="rating">⭐ 4.0</span>
+            </div>
+
+            <div class="repairer-card">
+                <img src="../img/roberto.jpg" alt="Technician">
+                <h4>Roberto Carlos</h4>
+                <p>Plumbing</p>
+                <span class="rating">⭐ 4.5</span>
+            </div>
+        </div>
+    </section>
+
+    <div id="profileModal" class="modal-backdrop" onclick="closeModalOutside(event, 'profileModal')">
+        
+        <div class="profile-container">
+            
+            <div class="profile-header">
+                <i class="fas fa-times close-button" onclick="closeModal('profileModal')"></i>
+                <h2>Profile</h2>
+                <img class="profile-image" src="../img/tristan.jpg" alt="Profile Picture">
+            </div>
+            
+            <div class="profile-info">
+                <h3>Tristan Mirano</h3>
+                <p>Customer</p>
+            </div>
+            
+            <div class="profile-menu">
+                
+                <a href="#" class="menu-item" onclick="openAccountInfoModal()">
+                    <div class="menu-item-content">
+                        <i class="fas fa-wrench" style="color: #137594;"></i>
+                        <span>Account Information</span>
+                    </div>
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+                
+                <a href="#" class="menu-item" onclick="openChangePasswordModal()">
+                    <div class="menu-item-content">
+                        <i class="fas fa-lock" style="color: #137594;"></i>
+                        <span>Change Password</span>
+                    </div>
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+
+                <a href="#" class="menu-item" onclick="openConfirmDeleteModal()">
+                    <div class="menu-item-content">
+                        <i class="fas fa-trash" style="color: #137594;"></i>
+                        <span>Delete Account</span>
+                    </div>
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+                
+                <button class="logout-button" onclick="handleLogout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Log Out
+                </button>
+                
+            </div>
+            
+        </div>
+        
+    </div>
+
+    <div id="accountInfoModal" class="modal-backdrop" onclick="closeModalOutside(event, 'accountInfoModal')">
+        
+        <div class="profile-container">
+            
+            <div class="profile-header">
+                <i class="fas fa-arrow-left back-arrow" onclick="returnToProfileModal()"></i>
+                <br><br><br>
+                <img class="profile-image" src="../img/tristan.jpg" alt="Profile Picture">
+                <i class="fas fa-pencil-alt edit-icon"></i>
+            </div>
+            
+            <div class="account-details-body">
+                <div class="name-and-gender">
+                    <h3>Tristan Jay Mirano</h3>
+                    <i class="fas fa-male" style="font-size: 20px;"></i> 
+                </div>
+
+                <div class="details-section">
+                    <h4>Contact Information</h4>
+                    <div class="detail-row">
+                        Email
+                        <p>tristan.mirano@gmail.com</p>
+                    </div>
+                    <div class="detail-row">
+                        Phone Number
+                        <p>09653216532</p>
+                    </div>
+                </div>
+
+                <div class="details-section">
+                    <h4>Personal Details</h4>
+                    <div class="detail-row">
+                        Address
+                        <p>Kumintang Ibaba, Batangas City</p>
+                    </div>
+                    <div class="detail-row">
+                        Gender
+                        <p>Male</p>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+        
+    </div>
+
+    <div id="changePasswordModal" class="modal-backdrop" onclick="closeModalOutside(event, 'changePasswordModal')">
+        
+        <div class="profile-container">
+            
+            <div class="profile-header">
+                <i class="fas fa-arrow-left back-arrow" onclick="returnToProfileFromPassword()"></i>
+                <h2>Change Password</h2>
+            </div>
+            
+            <div class="password-form-container">
+                
+                <div class="form-group">
+                    <label>Current Password</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="currentPassword" placeholder="">
+                        <i class="fas fa-eye toggle-password" onclick="togglePasswordVisibility('currentPassword', this)"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>New Password</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="newPassword" placeholder="Enter your new password" oninput="checkPasswordStrength()">
+                        <i class="fas fa-eye toggle-password" onclick="togglePasswordVisibility('newPassword', this)"></i>
+                    </div>
+                    <p class="password-requirements">Minimum 8 characters, include one uppercase, one number, and one symbol</p>
+                    <div class="strength-bar">
+                        <div id="strengthBarFill" class="strength-bar-fill"></div>
+                    </div>
+                    <p id="passwordStrength" class="password-strength"></p>
+                </div>
+
+                <div class="form-group">
+                    <label>New Password</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="confirmPassword" placeholder="Confirm your new password" oninput="checkPasswordMatch()">
+                        <i class="fas fa-eye toggle-password" onclick="togglePasswordVisibility('confirmPassword', this)"></i>
+                    </div>
+                    <p id="matchMessage" style="font-size: 12px; margin-top: 5px;"></p>
+                </div>
+
+                <button class="save-password-button" onclick="savePassword()" id="savePasswordBtn" disabled>Save Password</button>
+                
+            </div>
+            
+        </div>
+        
+    </div>
+
+    <div id="confirmDeleteModal" class="modal-backdrop" onclick="closeModalOutside(event, 'confirmDeleteModal')">
+        <div class="delete-confirm-container">
+            <i class="fas fa-exclamation-triangle" style="color: #E74C3C; font-size: 48px; margin-bottom: 15px;"></i>
+            <h3>Confirm Deletion</h3>
+            <p>Are you sure you want to permanently delete your account? This action cannot be undone.</p>
+            <div class="delete-buttons">
+                <button class="delete-btn" onclick="handleDeleteAccount()">Delete</button>
+                <button class="cancel-btn" onclick="closeModal('confirmDeleteModal')">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/customer-dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,273 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+}
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 30px;
+}
+.header {
+  background: linear-gradient(135deg, #1b7a8e 0%, #0d5f70 100%);
+  padding: 30px;
+  color: white;
+  border-radius: 12px 12px 0 0;
+  margin-bottom: 0;
+}
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+.card {
+  background: white;
+  border-radius: 0 0 12px 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.tabs {
+  display: flex;
+  gap: 10px;
+  padding: 20px;
+  background: white;
+  flex-wrap: wrap;
+}
+.tab {
+  background: #d1d5db;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 25px;
+  color: #4b5563;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+.tab.active {
+  background: #1b7a8e;
+  color: white;
+}
+.tab:hover {
+  background: #b8bdc4;
+}
+.tab.active:hover {
+  background: #0d5f70;
+}
+.jobs-container {
+  padding: 20px;
+}
+.jobs-container.hidden {
+  display: none;
+}
+.job-item {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  margin-bottom: 15px;
+  background: #f0f4f5;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.job-item:hover {
+  background: #e5ebed;
+  transform: translateX(3px);
+}
+.job-item:last-child {
+  margin-bottom: 0;
+}
+.job-icon {
+  width: 60px;
+  height: 60px;
+
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+.job-icon img {
+  width: 50px;
+  height: 50px;
+  fill: white;
+}
+.job-info {
+  flex: 1;
+}
+.job-title {
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin-bottom: 6px;
+  color: #1a1a1a;
+}
+.job-customer {
+  font-size: 1rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+.job-arrow {
+  color: #1b7a8e;
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin-left: 15px;
+}
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  align-items: center;
+  justify-content: center;
+}
+.modal.active {
+  display: flex;
+}
+.modal-content {
+  background: white;
+  border-radius: 16px;
+  padding: 35px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+.modal-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+  color: #1a1a1a;
+}
+.modal-section {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.modal-section img {
+  width: 28px;
+  height: 28px;
+  margin-right: 15px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.modal-icon {
+  width: 28px;
+  height: 28px;
+  margin-right: 15px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.modal-label {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+.modal-value {
+  font-size: 1.05rem;
+  color: #1a1a1a;
+  font-weight: 600;
+}
+.modal-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 35px;
+}
+.modal-btn {
+  flex: 1;
+  padding: 14px 24px;
+  border-radius: 10px;
+  border: none;
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.modal-btn-cancel {
+  background: #e5e7eb;
+  color: #6b7280;
+}
+.modal-btn-cancel:hover {
+  background: #d1d5db;
+}
+.modal-btn-complete {
+  background: #10b981;
+  color: white;
+}
+.modal-btn-complete:hover {
+  background: #059669;
+}
+.modal-btn-decline {
+  background: #ef4444;
+  color: white;
+}
+.modal-btn-decline:hover {
+  background: #dc2626;
+}
+.modal-btn-accept {
+  background: #10b981;
+  color: white;
+}
+.modal-btn-accept:hover {
+  background: #059669;
+}
+.price-badge {
+  background: #fbbf24;
+  color: #1a1a1a;
+  padding: 8px 18px;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-right: 10px;
+  display: inline-block;
+}
+.complete-badge {
+  background: #10b981;
+  color: white;
+  padding: 10px 24px;
+  border-radius: 25px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.complete-badge:hover {
+  background: #059669;
+}
+.job-badges {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+  .header h1 {
+    font-size: 1.8rem;
+  }
+  .tabs {
+    gap: 8px;
+  }
+  .tab {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+  .job-title {
+    font-size: 1.1rem;
+  }
+  .job-customer {
+    font-size: 0.9rem;
+  }
+}

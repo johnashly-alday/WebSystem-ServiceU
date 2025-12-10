@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Customer</title>
+    <link rel="stylesheet" href="../styles/admin-edit-customer.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header header-edit">
+        <div class="header-left">
+          <button
+            class="back-button"
+            onclick="window.location.href='admin-customer-management.html'"
+          >
+            <img src="../img/arrow.png" class="back-arrow" />
+          </button>
+          <h1>Edit Customer</h1>
+        </div>
+      </div>
+
+      <div class="profile-section">
+        <div class="profile-container">
+          <img src="../img/tristan.jpg" class="profile-picture" />
+          <div class="edit-profile-icon-pencil">
+            <img src="../img/pencil1.png" alt="Edit" />
+          </div>
+        </div>
+        <div class="customer-name">
+          Tristan Jay Mirano
+          <div class="male-icon">
+            <img src="../img/gender.png" />
+          </div>
+        </div>
+      </div>
+
+      <div class="card-group">
+        <div class="info-card">
+          <h2>Contact Information</h2>
+          <div class="info-item">
+            <div class="info-label">Email</div>
+            <div class="info-value">tristan.mirano@gmail.com</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Phone Number</div>
+            <div class="info-value">09653216532</div>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <h2>Personal Details</h2>
+          <div class="info-item">
+            <div class="info-label">Address</div>
+            <div class="info-value">
+              Kumintang Ibaba, Batangas City
+              <img src="../img/pencil.png" />
+            </div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Gender</div>
+            <div class="info-value">
+              Male
+              <img src="../img/pencil.png" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="action-buttons-edit">
+        <button class="save-changes-btn">Save Changes</button>
+        <button class="delete-account-btn" id="deleteBtn">
+          Delete Account
+        </button>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="deleteModal">
+      <div class="modal-content">
+        <img src="../img/warning.png" class="warning-icon" />
+        <div class="modal-title">Delete this account?</div>
+        <div class="modal-message">
+          This action is permanent and cannot be undone. All user data
+          associated with this account will be permanently deleted.
+        </div>
+        <div class="modal-buttons">
+          <button class="modal-cancel-btn" id="cancelBtn">Cancel</button>
+          <button class="modal-delete-btn" id="confirmDeleteBtn">Delete</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const deleteModal = document.getElementById("deleteModal");
+      const deleteBtn = document.getElementById("deleteBtn");
+      const cancelBtn = document.getElementById("cancelBtn");
+      deleteBtn.addEventListener("click", function () {
+        deleteModal.classList.add("active");
+      });
+      cancelBtn.addEventListener("click", function () {
+        deleteModal.classList.remove("active");
+      });
+      deleteModal.addEventListener("click", function (e) {
+        if (e.target === deleteModal) {
+          deleteModal.classList.remove("active");
+        }
+      });
+    </script>
+  </body>
+</html>

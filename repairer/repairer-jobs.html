@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/repairer-jobs.css">
+    <title>Jobs Dashboard</title>
+
+</head>
+<body onload="renderJobs()">
+    <div class="container">
+        <div class="header">
+            <h1>Jobs</h1>
+        </div>
+        <div class="card">
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab('incoming', this)">Incoming</button>
+                <button class="tab" onclick="switchTab('ongoing', this)">Ongoing</button>
+                <button class="tab" onclick="switchTab('cancelled', this)">Cancelled</button>
+                <button class="tab" onclick="switchTab('completed', this)">Completed</button>
+            </div>
+            <div class="jobs-container" id="incoming-jobs">
+                <div class="job-item" onclick="openRequestModal('Replace Component', 'Tristan Mirano', 'Fri, Nov 07, 2025 - 05:26 PM')">
+                    <div class="job-icon">
+                        <img src="../img/chip.png" alt="">
+                    </div>
+                    <div class="job-info">
+                        <div class="job-title">Replace Component</div>
+                        <div class="job-customer">Tristan Mirano</div>
+                    </div>
+                    <div class="job-arrow">›</div>
+                </div>
+                <div class="job-item" onclick="openRequestModal('Device Repair', 'Brent Pagcaliwagan', 'Fri, Nov 07, 2025 - 05:26 PM')">
+                    <div class="job-icon">
+                        <img src="../img/chip.png" alt="">
+                    </div>
+                    <div class="job-info">
+                        <div class="job-title">Device Repair</div>
+                        <div class="job-customer">Brent Pagcaliwagan</div>
+                    </div>
+                    <div class="job-arrow">›</div>
+                </div>
+                <div class="job-item" onclick="openRequestModal('Hardware Restoration', 'Kenn Philip Silang', 'Fri, Nov 07, 2025 - 05:26 PM')">
+                    <div class="job-icon">
+                        <img src="../img/chip.png" alt="">
+                    </div>
+                    <div class="job-info">
+                        <div class="job-title">Hardware Restoration</div>
+                        <div class="job-customer">Kenn Philip Silang</div>
+                    </div>
+                    <div class="job-arrow">›</div>
+                </div>
+            </div>
+            <div class="jobs-container hidden" id="ongoing-jobs">
+                </div>
+            <div class="jobs-container hidden" id="cancelled-jobs">
+                <p style="text-align: center; color: #9ca3af; padding: 40px;">No cancelled jobs</p>
+            </div>
+            <div class="jobs-container hidden" id="completed-jobs">
+                </div>
+        </div>
+    </div>
+    <div class="modal" id="acceptDeclineModal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <h3 class="modal-title">Job Request</h3>
+            <div class="modal-section">
+                <img src="../img/chip.png" alt="">
+                <div>
+                    <div class="modal-label">Problem</div>
+                    <div class="modal-value" id="modal-problem-request">Component Replacement</div>
+                </div>
+            </div>
+            <div class="modal-section">
+                <svg class="modal-icon" viewBox="0 0 24 24" fill="#1b7a8e" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                </svg>
+                <div>
+                    <div class="modal-label">Customer</div>
+                    <div class="modal-value" id="modal-customer-request">Tristan Mirano</div>
+                </div>
+            </div>
+            <div class="modal-section">
+                <svg class="modal-icon" viewBox="0 0 24 24" fill="#1b7a8e" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
+                </svg>
+                <div>
+                    <div class="modal-label">Date & Time</div>
+                    <div class="modal-value" id="modal-datetime-request">Fri, Nov 07, 2025 - 05:26 PM</div>
+                </div>
+            </div>
+            <div class="modal-section">
+                <svg class="modal-icon" viewBox="0 0 24 24" fill="#1b7a8e" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+                <div>
+                    <div class="modal-value">Gulod Labac, Batangas City</div>
+                </div>
+            </div>
+            <div class="modal-section">
+                <svg class="modal-icon" viewBox="0 0 24 24" fill="#1b7a8e" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>
+                </svg>
+                <div>
+                    <div class="modal-label">Payment</div>
+                    <div class="modal-value">Cash</div>
+                </div>
+            </div>
+            <div class="modal-buttons">
+                <button class="modal-btn modal-btn-decline" onclick="declineJob()">Decline</button>
+                <button class="modal-btn modal-btn-accept" onclick="acceptJob()">Accept</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="acceptConfirmModal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="#10b981" xmlns="http://www.w3.org/2000/svg" style="margin: 0 auto;">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                </svg>
+            </div>
+            <h3 class="modal-title" style="text-align: center; color: #10b981; margin-bottom: 15px;">Booking Accepted!</h3>
+            <p style="text-align: center; color: #6b7280; font-size: 1.05rem; margin-bottom: 25px;">You have successfully accepted the booking for <strong id="accepted-customer-name">Tristan Mirano</strong></p>
+            <div class="modal-section">
+                <img src="../img/chip.png" alt="">
+                <div>
+                    <div class="modal-label">Service</div>
+                    <div class="modal-value" id="accepted-service">Replace Component</div>
+                </div>
+            </div>
+            <div class="modal-section">
+                <svg class="modal-icon" viewBox="0 0 24 24" fill="#1b7a8e" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
+                </svg>
+                <div>
+                    <div class="modal-label">Scheduled Date & Time</div>
+                    <div class="modal-value" id="accepted-datetime">Fri, Nov 07, 2025 - 05:26 PM</div>
+                </div>
+            </div>
+            <div class="modal-buttons">
+                <button class="modal-btn modal-btn-complete" onclick="closeAcceptModal()" style="width: 100%;">OK</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="completeServiceModal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <h3 class="modal-title">Complete Service?</h3>
+            <div class="modal-section">
+                <img src="../img/chip.png" alt="">
+                <div>
+                    <div class="modal-label">Problem</div>
+                    <div class="modal-value" id="modal-problem-complete">Component Replacement</div>
+                </div>
+            </div>
+            <div class="modal-section">
+                <svg class="modal-icon" viewBox="0 0 24 24" fill="#1b7a8e" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/>
+                </svg>
+                <div>
+                    <div class="modal-label">Customer</div>
+                    <div class="modal-value" id="modal-customer-complete">Vin Perez</div>
+                </div>
+            </div>
+            <div class="modal-section">
+                <svg class="modal-icon" viewBox="0 0 24 24" fill="#1b7a8e" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 11H7v2h2v-2zm4 0h-2v2h2v-2zm4 0h-2v2h2v-2zm2-7h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V9h14v11z"/>
+                </svg>
+                <div>
+                    <div class="modal-label">Date & Time</div>
+                    <div class="modal-value" id="modal-datetime-complete">Fri, Nov 07, 2025 - 05:26 PM</div>
+                </div>
+            </div>
+            <div class="modal-section">
+                <svg class="modal-icon" viewBox="0 0 24 24" fill="#1b7a8e" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg>
+                <div>
+                    <div class="modal-value">Gulod Labac, Batangas City</div>
+                </div>
+            </div>
+            <div class="modal-section">
+                <svg class="modal-icon" viewBox="0 0 24 24" fill="#1b7a8e" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/>
+                </svg>
+                <div>
+                    <div class="modal-label">Payment</div>
+                    <div class="modal-value">Cash</div>
+                </div>
+            </div>
+            <div class="modal-section">
+                <svg class="modal-icon" viewBox="0 0 24 24" fill="#fbbf24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
+                </svg>
+                <div>
+                    <div class="modal-label">Service Price</div>
+                    <div class="modal-value" id="modal-price-complete" style="color: #fbbf24;">₱ 320.00</div>
+                </div>
+            </div>
+            <div class="modal-buttons">
+                <button class="modal-btn modal-btn-cancel" onclick="closeCompleteModal()">Cancel</button>
+                <button class="modal-btn modal-btn-complete" onclick="confirmComplete()">Complete</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../scripts/repairer-jobs.js"></script>
+</body>
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image" href="../img/logo">
+    <link rel="stylesheet" href="../styles/repairer-dashboard.css">
+    <title>ServiceU - Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <!-- Top Navbar -->
+    <header class="navbar">
+        <div class="logo-container">
+            <img class="logoimg" src="../img/logo.png" alt="">
+            <div class="logo">Service-U</div>
+        </div>
+        <nav class="nav-links">
+            <a href="repairer-dashboard.html">Home</a>
+            <a href="repairer-jobs.html">Jobs</a>
+            <a href="repairer-earnings.html">Earnings</a>
+            <a href="repairer-setting.html">Settings</a>
+        </nav>
+        <div class="profile-nav">
+            <img src="../img/luis.jpg" alt="Profile" onclick="openModal()">
+        </div>
+    </header>
+
+    <!-- Header Section -->
+    <div class="header">
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" placeholder="Search for services and technicians">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <!-- My Bookings Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>2</h3>
+                <p>Pending</p>
+            </div>
+            <div class="stat-card">
+                <h3>1</h3>
+                <p>Ongoing</p>
+            </div>
+            <div class="stat-card">
+                <h3>8</h3>
+                <p>Completed</p>
+            </div>
+        </div>
+
+        <!-- Action Cards -->
+        <div class="action-cards">
+            <div class="action-card" onclick="openSetPriceModal()">
+                <i class="fas fa-tags"></i>
+                <h4>Set Your Price</h4>
+            </div>
+            <div class="action-card" onclick="openFeedbackModal()">
+                <h4>Your Rating</h4>
+                <div class="rating-display">4.0/5 ⭐</div>
+            </div>
+        </div>
+
+        <!-- Active Bookings Section -->
+        <div class="section-header">
+            <h3>Active Bookings</h3>
+            <a href="#" class="view-all">View All</a>
+        </div>
+
+        <div class="booking-list">
+            <div class="booking-card">
+                <div class="booking-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <div class="booking-info">
+                    <h4>Plumbing Repair</h4>
+                    <p>Juan Dela Cruz</p>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+
+            <div class="booking-card">
+                <div class="booking-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <div class="booking-info">
+                    <h4>Electrical Wiring</h4>
+                    <p>Jose Mari</p>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+
+            <div class="booking-card">
+                <div class="booking-icon">
+                    <i class="fas fa-laptop"></i>
+                </div>
+                <div class="booking-info">
+                    <h4>Hardware Upgrade</h4>
+                    <p>Luis Fernando</p>
+                </div>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Set Price Modal -->
+    <div id="setPriceModal" class="modal-backdrop" onclick="closeSetPriceModalOutside(event)">
+        <div class="price-modal-container">
+            <button class="price-modal-close" onclick="closeSetPriceModal()">✕</button>
+
+            <h3>Base Service Fee (PHP)</h3>
+            <div class="price-input-group">
+                <input type="number" id="baseServiceFee" placeholder="500.00" value="500.00">
+                <p class="price-hint">This fee applies to your services</p>
+            </div>
+
+            <p class="price-range-label">Estimation Fee Range (PHP)</p>
+            <div class="price-range-inputs">
+                <input type="number" id="minEstimation" placeholder="200" value="200">
+                <span class="price-range-divider">—</span>
+                <input type="number" id="maxEstimation" placeholder="800" value="800">
+            </div>
+
+            <button class="set-price-button" onclick="savePriceSettings()">Set</button>
+        </div>
+    </div>
+
+    <!-- Customer Feedback Modal -->
+    <div id="feedbackModal" class="modal-backdrop" onclick="closeFeedbackModalOutside(event)">
+        <div class="feedback-modal">
+            <div class="feedback-header">
+                <button class="feedback-back-btn" onclick="closeFeedbackModal()">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h2>Customer Feedback</h2>
+            </div>
+
+            <div class="feedback-body">
+                <!-- Overall Rating Section -->
+                <div class="overall-rating-section">
+                    <h3>Overall Rating</h3>
+                    <div class="rating-score">
+                        <span class="rating-number">4.0</span>
+                        <span class="rating-star">⭐</span>
+                    </div>
+                    <p class="rating-count">Based on 1 review/s</p>
+
+                    <!-- Rating Bars -->
+                    <div class="rating-bars">
+                        <div class="rating-bar-row">
+                            <span>5 <i class="star">★</i></span>
+                            <div class="rating-bar-container">
+                                <div class="rating-bar-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="rating-bar-percent">0%</span>
+                        </div>
+                        <div class="rating-bar-row">
+                            <span>4 <i class="star">★</i></span>
+                            <div class="rating-bar-container">
+                                <div class="rating-bar-fill" style="width: 100%"></div>
+                            </div>
+                            <span class="rating-bar-percent">100%</span>
+                        </div>
+                        <div class="rating-bar-row">
+                            <span>3 <i class="star">★</i></span>
+                            <div class="rating-bar-container">
+                                <div class="rating-bar-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="rating-bar-percent">0%</span>
+                        </div>
+                        <div class="rating-bar-row">
+                            <span>2 <i class="star">★</i></span>
+                            <div class="rating-bar-container">
+                                <div class="rating-bar-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="rating-bar-percent">0%</span>
+                        </div>
+                        <div class="rating-bar-row">
+                            <span>1 <i class="star">★</i></span>
+                            <div class="rating-bar-container">
+                                <div class="rating-bar-fill" style="width: 0%"></div>
+                            </div>
+                            <span class="rating-bar-percent">0%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filter Section -->
+                <div class="filter-section">
+                    <span>Sort by:</span>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" onclick="filterReviews('all')">All</button>
+                        <button class="filter-btn" onclick="filterReviews('newest')">Newest</button>
+                        <button class="filter-btn" onclick="filterReviews('5')">5 ★</button>
+                    </div>
+                </div>
+
+                <!-- Reviews List -->
+                <div class="reviews-list" id="reviewsList">
+                    <div class="review-card">
+                        <div class="review-stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="review-text">The technician was very kind! He did a great job. Will definitely call again.</p>
+                        <div class="review-meta">
+                            <span class="review-service">Service: Component Replacement</span>
+                            <span class="review-date">November 07, 2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="profileModal" class="modal-backdrop" onclick="closeModalOutside(event, 'profileModal')">
+
+        <div class="profile-container">
+
+            <div class="profile-header">
+                <i class="fas fa-times close-button" onclick="closeModal('profileModal')"></i>
+                <h2>Profile</h2>
+                <img class="profile-image" src="../img/luis.jpg" alt="Profile Picture">
+            </div>
+
+            <div class="profile-info">
+                <h3>Luis Fernando </h3>
+                <p>Repairer</p>
+            </div>
+
+            <div class="profile-menu">
+
+                <a href="#" class="menu-item" onclick="openAccountInfoModal()">
+                    <div class="menu-item-content">
+                        <i class="fas fa-wrench" style="color: #137594;"></i>
+                        <span>Account Information</span>
+                    </div>
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+
+                <a href="#" class="menu-item" onclick="openChangePasswordModal()">
+                    <div class="menu-item-content">
+                        <i class="fas fa-lock" style="color: #137594;"></i>
+                        <span>Change Password</span>
+                    </div>
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+
+                <a href="#" class="menu-item" onclick="openConfirmDeleteModal()">
+                    <div class="menu-item-content">
+                        <i class="fas fa-trash" style="color: #137594;"></i>
+                        <span>Delete Account</span>
+                    </div>
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+
+                <button class="logout-button" onclick="handleLogout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Log Out
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="accountInfoModal" class="modal-backdrop" onclick="closeModalOutside(event, 'accountInfoModal')">
+
+        <div class="profile-container">
+
+            <div class="profile-header">
+                <i class="fas fa-arrow-left back-arrow" onclick="returnToProfileModal()"></i>
+                <br><br><br>
+                <img class="profile-image" src="../img/luis.jpg" alt="Profile Picture">
+                <i class="fas fa-pencil-alt edit-icon"></i>
+            </div>
+
+            <div class="account-details-body">
+                <div class="name-and-gender">
+                    <h3>Luis Fernando</h3>
+                    <i class="fas fa-male" style="font-size: 20px;"></i>
+                </div>
+
+                <div class="details-section">
+                    <h4>Contact Information</h4>
+                    <div class="detail-row">
+                        Email
+                        <p>luis.fernando@gmail.com</p>
+                    </div>
+                    <div class="detail-row">
+                        Phone Number
+                        <p>09653216532</p>
+                    </div>
+                </div>
+
+                <div class="details-section">
+                    <h4>Personal Details</h4>
+                    <div class="detail-row">
+                        Address
+                        <p>Kumintang Ibaba, Batangas City</p>
+                    </div>
+                    <div class="detail-row">
+                        Gender
+                        <p>Male</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="changePasswordModal" class="modal-backdrop" onclick="closeModalOutside(event, 'changePasswordModal')">
+
+        <div class="profile-container">
+
+            <div class="profile-header">
+                <i class="fas fa-arrow-left back-arrow" onclick="returnToProfileFromPassword()"></i>
+                <h2>Change Password</h2>
+            </div>
+
+            <div class="password-form-container">
+
+                <div class="form-group">
+                    <label>Current Password</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="currentPassword" placeholder="">
+                        <i class="fas fa-eye toggle-password" onclick="togglePasswordVisibility('currentPassword', this)"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>New Password</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="newPassword" placeholder="Enter your new password" oninput="checkPasswordStrength()">
+                        <i class="fas fa-eye toggle-password" onclick="togglePasswordVisibility('newPassword', this)"></i>
+                    </div>
+                    <p class="password-requirements">Minimum 8 characters, include one uppercase, one number, and one symbol</p>
+                    <div class="strength-bar">
+                        <div id="strengthBarFill" class="strength-bar-fill"></div>
+                    </div>
+                    <p id="passwordStrength" class="password-strength"></p>
+                </div>
+
+                <div class="form-group">
+                    <label>New Password</label>
+                    <div class="password-input-wrapper">
+                        <input type="password" id="confirmPassword" placeholder="Confirm your new password" oninput="checkPasswordMatch()">
+                        <i class="fas fa-eye toggle-password" onclick="togglePasswordVisibility('confirmPassword', this)"></i>
+                    </div>
+                    <p id="matchMessage" style="font-size: 12px; margin-top: 5px;"></p>
+                </div>
+
+                <button class="save-password-button" onclick="savePassword()" id="savePasswordBtn" disabled>Save Password</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div id="confirmDeleteModal" class="modal-backdrop" onclick="closeModalOutside(event, 'confirmDeleteModal')">
+        <div class="delete-confirm-container">
+            <i class="fas fa-exclamation-triangle" style="color: #E74C3C; font-size: 48px; margin-bottom: 15px;"></i>
+            <h3>Confirm Deletion</h3>
+            <p>Are you sure you want to permanently delete your account? This action cannot be undone.</p>
+            <div class="delete-buttons">
+                <button class="delete-btn" onclick="handleDeleteAccount()">Delete</button>
+                <button class="cancel-btn" onclick="closeModal('confirmDeleteModal')">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../scripts/repairer-dashboard.js"></script>
+</body>
+</html>

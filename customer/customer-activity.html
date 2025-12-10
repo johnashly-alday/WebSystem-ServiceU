@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image" href="../img/logo">
+    <link rel="stylesheet" href="../styles/customer-activity.css">
+    <title>Activity Feed</title>
+</head>
+
+<body>
+
+<div class="page-container">
+
+    <div class="header">
+        <h1>Activity</h1>
+    </div>
+
+    <div class="content">
+
+        <!-- FILTER TABS -->
+        <div class="filter-tabs">
+            <button class="tab active" data-filter="all">All</button>
+            <button class="tab" data-filter="ongoing">Ongoing</button>
+            <button class="tab" data-filter="cancelled">Cancelled</button>
+            <button class="tab" data-filter="completed">Completed</button>
+        </div>
+
+        <!-- LIST WRAPPER -->
+        <div id="activityList">
+
+            <!-- HARDWARE -->
+            <div class="category-section" data-status="completed">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <span class="category-title">Hardware</span>
+                    <span class="category-icon">▲</span>
+                </div>
+
+                <div class="category-content">
+                    <div class="activity-item">
+                        <div class="activity-icon"><img src="../img/chip.png" alt=""></div>
+                        <div class="activity-content">
+                            <div class="activity-name">Luis Fernando</div>
+                            <div class="activity-time">7 Nov 2025, 05:26 PM</div>
+                            <a href="#" onclick="showRatingModal('Luis Fernando', 'Hardware'); return false;">Rate →</a>
+                        </div>
+                        <div class="activity-right">
+                            <div class="activity-price">₱ 320.00</div>
+                            <button class="activity-button">Rebook</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PLUMBING -->
+            <div class="category-section" data-status="cancelled">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <span class="category-title">Plumbing</span>
+                    <span class="category-icon">▲</span>
+                </div>
+
+                <div class="category-content">
+                    <div class="activity-item">
+                        <div class="activity-icon"><img src="../img/repairing.png" alt=""></div>
+                        <div class="activity-content">
+                            <div class="activity-name">Jose Mari</div>
+                            <div class="activity-time">7 Nov 2025, 05:26 PM</div>
+                        </div>
+                        <div class="activity-right">
+                            <div class="activity-price">₱ 320.00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ELECTRICAL -->
+            <div class="category-section" data-status="ongoing">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <span class="category-title">Electrical</span>
+                    <span class="category-icon">▲</span>
+                </div>
+
+                <div class="category-content">
+                    <div class="activity-item">
+                        <div class="activity-icon"><img src="../img/flash.png" alt=""></div>
+                        <div class="activity-content">
+                            <div class="activity-name">Juan Dela Cruz</div>
+                            <div class="activity-time">7 Nov 2025, 05:26 PM</div>
+                        </div>
+                        <div class="activity-right">
+                            <div class="activity-price">₱ 320.00</div>
+                            <button class="cancel-button" onclick="showCancelModal()">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Cancel Modal -->
+<div class="modal-overlay" id="cancelModal">
+    <div class="modal">
+        <h3>Cancel Booking?</h3>
+        <p>This action cannot be undone.</p>
+
+        <div class="modal-buttons">
+            <button class="modal-button modal-button-cancel" onclick="closeCancelModal()">No</button>
+            <button class="modal-button modal-button-confirm" onclick="confirmCancel()">Yes, Cancel</button>
+        </div>
+    </div>
+</div>
+
+<!-- Rating Modal -->
+<div class="modal-overlay" id="ratingModal">
+    <div class="rating-modal">
+        <div class="rating-modal-header">
+            <h3>Rate Service</h3>
+            <button class="rating-modal-close" onclick="closeRatingModal()">✕</button>
+        </div>
+
+        <div class="rating-modal-body">
+            <!-- Technician Info -->
+            <div class="technician-info">
+                <div class="technician-avatar">👤</div>
+                <div class="technician-name" id="technicianName">Luis Fernando</div>
+                <div class="service-type" id="serviceType">Hardware</div>
+            </div>
+
+            <!-- Star Rating -->
+            <div class="rating-section">
+                <div class="rating-section-title">How was your experience?</div>
+                <div class="star-rating" id="starRating">
+                    <span class="star" data-rating="1" onclick="setRating(1)">★</span>
+                    <span class="star" data-rating="2" onclick="setRating(2)">★</span>
+                    <span class="star" data-rating="3" onclick="setRating(3)">★</span>
+                    <span class="star" data-rating="4" onclick="setRating(4)">★</span>
+                    <span class="star" data-rating="5" onclick="setRating(5)">★</span>
+                </div>
+            </div>
+
+            <!-- Comment Section -->
+            <div class="comment-section">
+                <div class="rating-section-title">Share your thoughts (optional)</div>
+                <textarea 
+                    class="comment-textarea" 
+                    id="ratingComment" 
+                    placeholder="Tell us about your experience..."
+                    maxlength="500"
+                ></textarea>
+                <div class="comment-hint">Max 500 characters</div>
+            </div>
+
+            <!-- Submit Button -->
+            <button class="submit-rating-button" id="submitRatingBtn" disabled onclick="submitRating()">
+                Submit Rating
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Success Modal -->
+<div class="modal-overlay" id="successModal">
+    <div class="success-modal">
+        <div class="success-icon">👍</div>
+        <h3>Thank you for your feedback!</h3>
+        <p>Your rating has been submitted successfully. We appreciate you helping us improve our service.</p>
+        <button class="back-home-button" onclick="closeSuccessModal()">Back to Home</button>
+    </div>
+</div>
+
+<script src="../scripts/customer-activity.js"></script>
+</body>
+</html>

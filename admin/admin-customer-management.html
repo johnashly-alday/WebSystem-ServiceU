@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customer Management</title>
+    <link rel="stylesheet" href="../styles/admin-cus-management.css" />
+    <script>
+      function toggleMenu(button) {
+        const card = button.closest(".customer-card");
+        const dropdown = card.querySelector(".dropdown-menu");
+        dropdown.classList.toggle("show");
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="header-left">
+          <button
+            class="back-button"
+            onclick="window.location.href='admin-dashboard.html'"
+          >
+            <img src="../img/arrow.png" class="back-arrow" />
+          </button>
+          <h1>Customer Management</h1>
+        </div>
+
+        <div class="search-container">
+          <input type="text" placeholder="Search..." class="search-input" />
+          <img src="../img/search.png" class="search-icon" />
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="filter-buttons">
+          <button class="filter-btn active">All</button>
+          <button class="filter-btn">Active</button>
+          <button class="filter-btn">Inactive</button>
+        </div>
+
+        <div class="customer-card">
+          <div class="customer-avatar">TM</div>
+          <div class="customer-info">
+            <h3>Tristan Mirano</h3>
+            <p class="email">tristan.mirano@example.com</p>
+            <p class="last-online">Last Online: 25/11/2025 - 3:00 PM</p>
+          </div>
+          <span class="status-badge inactive">Inactive</span>
+          <button class="menu-btn" onclick="toggleMenu(this)">⋮</button>
+
+          <div class="dropdown-menu">
+            <a href="admin-edit-customer.html" class="edit-link">
+              <img src="../img/pencil.png" class="edit-icon" />
+              Edit Information
+            </a>
+          </div>
+        </div>
+
+        <div class="customer-card">
+          <div class="customer-avatar">AA</div>
+          <div class="customer-info">
+            <h3>Ashley Alday</h3>
+            <p class="email">ashley.alday@example.com</p>
+            <p class="last-online">Last Online: 25/11/2025 - 3:00 PM</p>
+          </div>
+          <span class="status-badge active">Active</span>
+          <button class="menu-btn" onclick="toggleMenu(this)">⋮</button>
+
+          <div class="dropdown-menu">
+            <a href="admin-edit-customer.html" class="edit-link">
+              <img src="../img/pencil.png" class="edit-icon" />
+              Edit Information
+            </a>
+          </div>
+        </div>
+
+        <div class="customer-card">
+          <div class="customer-avatar">BV</div>
+          <div class="customer-info">
+            <h3>Bryan Villalon</h3>
+            <p class="email">bryan.villalon@example.com</p>
+            <p class="last-online">Last Online: 25/11/2025 - 3:00 PM</p>
+          </div>
+          <span class="status-badge active">Active</span>
+          <button class="menu-btn" onclick="toggleMenu(this)">⋮</button>
+
+          <div class="dropdown-menu">
+            <a href="admin-edit-customer.html" class="edit-link">
+              <img src="../img/pencil.png" class="edit-icon" />
+              Edit Information
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

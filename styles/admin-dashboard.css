@@ -1,0 +1,328 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Inter';
+    background-color: #ffffff;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: auto;
+    margin: 0 auto;
+    background: rgb(255, 255, 255);
+    min-height: 100vh;
+    position: relative;
+    padding-bottom: 80px;
+}
+
+.header {
+    background: #137594;
+    color: white;
+    padding: 30px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.profile-icon {
+    width: 50px;
+    height: 50px;
+    background: rgb(255, 255, 255);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.profile-icon:hover {
+    transform: scale(1.05);
+}
+
+.profile-icon img,
+#userIcon {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+}
+
+.content {
+    padding: 40px;
+}
+
+.stat-card {
+    background: #eaf3f5;
+    border-radius: 12px;
+    padding: 24px 30px;
+    margin-bottom: 20px;
+    position: relative;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.stat-card h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 12px;
+}
+
+.stat-card .number {
+    font-size: 27px;
+    font-weight: 700;
+    color: #1E1E1EBF;
+}
+
+.filter-icon {
+    position: absolute;
+    top: 24px;
+    right: 30px;
+    color: #2b7a9d;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.filter-icon img,
+#sortBookings {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.chart-container {
+    background: #f0f4f8;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 20px;
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.chart-header h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000;
+
+}
+
+.chart-header span {
+    font-size: 16px;
+    color: #1E1E1EBF;
+}
+
+.chart-sort-icon,
+#sortChart {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.chart {
+    display: flex;
+    gap: 15px;
+    height: 200px;
+    position: relative;
+}
+
+.y-axis {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-right: 10px;
+    border-right: 2px solid #ccc;
+    min-width: 30px;
+}
+
+.y-label {
+    font-size: 12px;
+    color: #666;
+    font-weight: 500;
+    text-align: right;
+}
+
+.chart-bars {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    gap: 12px;
+    border-bottom: 2px solid #ccc;
+    position: relative;
+}
+
+.bar-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    height: 100%;
+    justify-content: flex-end;
+}
+
+.bar {
+    width: 100%;
+    background: #2b7a9d;
+    border-radius: 6px 6px 0 0;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 5px;
+}
+
+.bar:hover {
+    background: #1a5c7a;
+}
+
+.bar-value {
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.bar-label {
+    font-size: 12px;
+    color: #666;
+    text-align: center;
+    font-weight: 500;
+    margin-top: 8px;
+}
+
+.quick-actions {
+    margin-top: 40px;
+}
+
+.quick-actions h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: #000;
+}
+
+.action-button {
+    background: #e8f1f5;
+    border-radius: 12px;
+    padding: 20px 30px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.action-button:hover {
+    background: #d9e8ef;
+    transform: translateX(5px);
+}
+
+.action-button img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+#viewRepairer,
+#viewCustomer,
+#pendingVerifications {
+    width: 50px;
+    height: 50px;
+}
+
+.action-button span {
+    font-size: 18px;
+    font-weight: 600;
+    color: #000;
+}
+
+.badge {
+    position: absolute;
+    top: -8px;
+    right: -5px;
+    background: #ff0000;
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+}
+.bottom-nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.nav-item:hover {
+    transform: translateY(-2px);
+}
+
+.nav-item.active {
+    color: #2b7a9d;
+}
+
+.nav-item.inactive {
+    color: #999;
+}
+
+.nav-item img {
+    width: 32px;
+    height: 32px;
+    object-fit: contain;
+}
+
+#dashboard,
+#settings {
+    width: 32px;
+    height: 32px;
+}
+
+.nav-label {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.settings{
+    text-decoration: none;
+}

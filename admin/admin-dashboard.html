@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="../styles/admin-dashboard.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Hello, Admin!</h1>
+        <div class="profile-icon">
+          <img src="../img/user.png" id="userIcon" />
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="stat-card">
+          <img src="../img/sort1.png" id="sortBookings" class="filter-icon" />
+          <h3>Total Bookings</h3>
+          <div class="number">128</div>
+        </div>
+
+        <div class="stat-card">
+          <h3>Active Repairers</h3>
+          <div class="number">3</div>
+        </div>
+
+        <div class="stat-card">
+          <h3>Pending Requests</h3>
+          <div class="number">8</div>
+        </div>
+
+        <div class="chart-container">
+          <div class="chart-header">
+            <div>
+              <h3>Total Bookings: <span>Last 7 Days</span></h3>
+            </div>
+            <img
+              src="../img/sort1.png"
+              id="sortChart"
+              class="chart-sort-icon"
+            />
+          </div>
+          <div class="chart">
+            <div class="y-axis">
+              <div class="y-label">5</div>
+              <div class="y-label">4</div>
+              <div class="y-label">3</div>
+              <div class="y-label">2</div>
+              <div class="y-label">1</div>
+              <div class="y-label">0</div>
+            </div>
+            <div class="chart-bars">
+              <div class="bar-container">
+                <div class="bar" data-value="3" style="height: 60%">
+                  <span class="bar-value">3</span>
+                </div>
+                <div class="bar-label">Mon</div>
+              </div>
+              <div class="bar-container">
+                <div class="bar" data-value="4" style="height: 80%">
+                  <span class="bar-value">4</span>
+                </div>
+                <div class="bar-label">Tues</div>
+              </div>
+              <div class="bar-container">
+                <div class="bar" data-value="2" style="height: 40%">
+                  <span class="bar-value">2</span>
+                </div>
+                <div class="bar-label">Wed</div>
+              </div>
+              <div class="bar-container">
+                <div class="bar" data-value="3" style="height: 60%">
+                  <span class="bar-value">3</span>
+                </div>
+                <div class="bar-label">Thurs</div>
+              </div>
+              <div class="bar-container">
+                <div class="bar" data-value="3" style="height: 60%">
+                  <span class="bar-value">3</span>
+                </div>
+                <div class="bar-label">Fri</div>
+              </div>
+              <div class="bar-container">
+                <div class="bar" data-value="4" style="height: 80%">
+                  <span class="bar-value">4</span>
+                </div>
+                <div class="bar-label">Sat</div>
+              </div>
+              <div class="bar-container">
+                <div class="bar" data-value="5" style="height: 100%">
+                  <span class="bar-value">5</span>
+                </div>
+                <div class="bar-label">Sun</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="quick-actions">
+          <h2>Quick Actions</h2>
+
+          <div
+            class="action-button"
+            onclick="window.location.href='admin-repairer-management.html'"
+          >
+            <img src="../img/viewallrepairers.png" id="viewRepairer" />
+            <span>View All Repairers</span>
+          </div>
+
+          <div
+            class="action-button"
+            onclick="window.location.href='admin-customer-management.html'"
+          >
+            <img src="../img/viewallcustomers.png" id="viewCustomer" />
+            <span>View All Customers</span>
+          </div>
+
+          <div
+            class="action-button"
+            onclick="window.location.href='admin-account-management.html'"
+          >
+            <div class="badge">3</div>
+            <img
+              src="../img/pendingverifications.png"
+              id="pendingVerifications"
+            />
+            <span>Pending Verifications</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bottom-nav">
+        <div class="nav-item active">
+          <img src="../img/dashboard.png" id="dashboard" />
+          <span class="nav-label">Dashboard</span>
+        </div>
+        <div class="nav-item inactive">
+          <img src="../img/setting.png" id="settings" />
+          <span class="nav-label"><a  class="settings" href="admin-settings.html">Settings</a></span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
