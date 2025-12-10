@@ -275,5 +275,7 @@ $error = isset($_GET['error']) ? $_GET['error'] : '';
     function completeSignup() {
         window.location.href = "../login.php";
     }
+</script>
+
 </body>
 </html>

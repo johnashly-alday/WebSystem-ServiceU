@@ -1,7 +1,3 @@
-<?php
-session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -78,6 +74,12 @@ session_start();
             padding: 20px;
         }
 
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #137594;
+        }
+
         .login-container form {
             display: flex;
             flex-direction: column;
@@ -120,34 +122,6 @@ session_start();
             margin-bottom: 20px;
         }
 
-        .divider {
-            border-top: 1px solid #dadde1;
-            margin: 20px 0;
-        }
-
-
-        .dont-have-account {
-            text-align: center;
-            color: #1c1e21;
-            font-size: 15px;
-        }
-
-        .sign-up-link {
-            color: #137594;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .login-admin {
-            text-align: center;
-            margin-top: 10px;
-            ;
-        }
-
-        .login-admin a {
-            color: #1c1e21;
-            font-size: 15px;
-        }
 
         @media (max-width: 1024px) {
             .main-container {
@@ -191,25 +165,11 @@ session_start();
         </div>
 
         <div class="login-container">
-            <?php
-                if(isset($_SESSION['error'])) {
-                    echo '<div class="error">'.$_SESSION['error'].'</div>';
-                    unset($_SESSION['error']);
-                }
-            ?>
-            <form action="./api/backend_login.php" method="POST">
-                <form action="backend_login.php" method="POST">
-                    <input type="text" name="username" placeholder="Username or Email" required>
-                    <input type="password" name="password" placeholder="Password" required>
-                    <button type="submit" class="login-btn"><strong>Log In</strong></button>
-            </form>
-
-
-                <div class="divider"></div>
-
-                <p class="dont-have-account">Don't have an account? <a href="choose_profile.html"
-                        class="sign-up-link">Sign Up</a></p>
-                <p class="login-admin"><a href="admin-login.php">Login as administrator</a></p>
+            <h2>Admin Portal</h2>
+            <form action="login.php" method="POST">
+                <input type="text" name="username" placeholder="Username or Email" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit" class="login-btn"><strong>Log In</strong></button>
             </form>
         </div>
     </div>
