@@ -185,7 +185,7 @@ session_start();
 <body>
     <div class="main-container">
         <div class="text-container">
-            <img src="img/logo" alt="Service-U Logo">
+            <img src="img/logo.png" alt="Service-U Logo">
             <h1>SERVICE-U</h1>
             <p>Book Trusted Repairers anywhere effortlessly</p>
         </div>
@@ -209,7 +209,7 @@ session_start();
 
                 <p class="dont-have-account">Don't have an account? <a href="choose_profile.html"
                         class="sign-up-link">Sign Up</a></p>
-                <p class="login-admin"><a href="admin-login.php">Login as administrator</a></p>
+                <p class="login-admin"><a href="./admin/admin-login.php">Login as administrator</a></p>
             </form>
         </div>
     </div>

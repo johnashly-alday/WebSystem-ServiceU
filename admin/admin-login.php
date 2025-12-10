@@ -159,14 +159,14 @@
 <body>
     <div class="main-container">
         <div class="text-container">
-            <img src="img/logo" alt="Service-U Logo">
+            <img src="../img/logo" alt="Service-U Logo">
             <h1>SERVICE-U</h1>
             <p>Book Trusted Repairers anywhere effortlessly</p>
         </div>
 
         <div class="login-container">
             <h2>Admin Portal</h2>
-            <form action="login.php" method="POST">
+            <form action="../api/admin_login.php" method="POST">
                 <input type="text" name="username" placeholder="Username or Email" required>
                 <input type="password" name="password" placeholder="Password" required>
                 <button type="submit" class="login-btn"><strong>Log In</strong></button>
