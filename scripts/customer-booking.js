@@ -251,7 +251,7 @@ function finalizeBooking() {
   };
 
   // ✅ SEND TO PHP API
-  fetch("http://localhost/WSServiceU/api/save_booking.php", {
+  fetch("http://localhost/serviceU/api/save_booking.php", {
     method: "POST",
     headers: {
       "Content-Type": "application/json"

@@ -32,10 +32,17 @@ body {
   font-size: 32px;
   font-weight: 600;
 }
+
 .header-with-back {
   display: flex;
   align-items: center;
   gap: 20px;
+}
+.header-with-back h1 {
+    position: relative;
+    z-index: 2;
+    background-color: transparent !important;
+    color: white !important;
 }
 .back-button {
   background-color: rgb(255, 255, 255);
@@ -51,6 +58,12 @@ body {
   font-size: 24px;
   font-weight: bold;
   transition: transform 0.2s ease;
+}
+
+.back-button img {
+    width: 24px; /* Ensure it's a reasonable size */
+    height: 24px;
+    color: black;
 }
 .back-button:hover {
   transform: scale(1.1);
@@ -319,6 +332,15 @@ body {
   align-items: center;
   gap: 15px;
 }
+
+.modal-header h2{
+  position: relative;
+    z-index: 2;
+    background-color: transparent !important;
+    color: white !important;
+}
+
+
 .modal-back-button {
   background: white;
   color: #1a7a8a;
@@ -332,6 +354,12 @@ body {
   cursor: pointer;
   font-size: 20px;
   font-weight: bold;
+}
+
+.modal-back-button img {
+    width: 24px; /* Ensure it's a reasonable size */
+    height: 24px;
+    color: black;
 }
 .modal-title {
   font-size: 24px;

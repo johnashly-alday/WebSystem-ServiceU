@@ -4,7 +4,7 @@ ini_set('display_errors', 1);
 
 $host = "localhost";
 $user = "root";
-$pass = "";
+$pass = "admin";
 $db = "ServiceU";
 
 $conn = new mysqli($host, $user, $pass, $db);
@@ -21,7 +21,7 @@ if (!$data) {
   exit;
 }
 
-$sql = "INSERT INTO bookings 
+$sql = "INSERT INTO bookings
 (repairer_name, category, problem, booking_date, booking_time, customer_name, customer_phone, customer_address, payment_method, estimated_price)
 VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
