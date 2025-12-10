@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -181,23 +185,31 @@
 <body>
     <div class="main-container">
         <div class="text-container">
-            <img src="img/logo" alt="Service-U Logo">
+            <img src="img/logo.png" alt="Service-U Logo">
             <h1>SERVICE-U</h1>
             <p>Book Trusted Repairers anywhere effortlessly</p>
         </div>
 
         <div class="login-container">
-            <form action="login.php" method="POST">
-                <input type="text" name="username" placeholder="Username or Email" required>
-                <input type="password" name="password" placeholder="Password" required>
-                <button type="submit" class="login-btn"><strong>Log In</strong></button>
-                <a href="#" class="forgot-pass">Forgot password?</a>
+            <?php
+                if(isset($_SESSION['error'])) {
+                    echo '<div class="error">'.$_SESSION['error'].'</div>';
+                    unset($_SESSION['error']);
+                }
+            ?>
+            <form action="./api/backend_login.php" method="POST">
+                <form action="backend_login.php" method="POST">
+                    <input type="text" name="username" placeholder="Username or Email" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <button type="submit" class="login-btn"><strong>Log In</strong></button>
+            </form>
+
 
                 <div class="divider"></div>
 
                 <p class="dont-have-account">Don't have an account? <a href="choose_profile.html"
                         class="sign-up-link">Sign Up</a></p>
-                <p class="login-admin"><a href="admin-login.php">Login as administrator</a></p>
+                <p class="login-admin"><a href="./admin/admin-login.php">Login as administrator</a></p>
             </form>
         </div>
     </div>

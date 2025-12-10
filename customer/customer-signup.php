@@ -1,15 +1,19 @@
+<?php
+session_start();
+$error = isset($_GET['error']) ? $_GET['error'] : '';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type = "image" href="../img/logo">
+    <link rel="icon" type="image/png" href="../img/logo.png">
     <title>Customer Sign Up</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
         body {
-            font-family: 'Inter', 'Roboto', sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: #f4f4f9;
             display: flex;
             justify-content: center;
@@ -23,7 +27,6 @@
             background-color: #ffffff;
             padding: 30px 40px;
             border-radius: 8px;
-
             width: 100%;
             max-width: 900px;
             box-sizing: border-box;
@@ -93,7 +96,6 @@
             border-radius: 4px;
             box-sizing: border-box;
             font-size: 14px;
-            font-family: inherit;
         }
 
         .complete-btn {
@@ -107,6 +109,15 @@
             font-size: 16px;
             font-weight: 600;
             transition: background-color 0.2s;
+        }
+
+        .error-message {
+            background-color: #ffdddd;
+            color: #cc0000;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            text-align: center;
         }
 
         .terms {
@@ -135,24 +146,28 @@
             <p>Let's get to know you!</p>
         </div>
 
-        <form action="#" method="POST">
+        <?php if($error != ''): ?>
+            <div class="error-message"><?php echo htmlspecialchars($error); ?></div>
+        <?php endif; ?>
+
+        <form action="../api/customer_register.php" method="POST">
             <div class="section">
                 <h2>Customer Signup</h2>
 
                 <div class="form-grid">
                     <div class="form-field">
                         <label for="full-name">Full Name</label>
-                        <input type="text" id="full-name" name="full_name" placeholder="Enter your full name" required>
+                        <input type="text" id="full-name" name="customer_fullName" placeholder="Enter your full name" required>
                     </div>
 
                     <div class="form-field">
                         <label for="phone-number">Phone Number</label>
-                        <input type="tel" id="phone-number" name="phone_number" placeholder="Enter your phone number" required>
+                        <input type="tel" id="phone-number" name="customer_phoneNum" placeholder="Enter your phone number" required>
                     </div>
 
                     <div class="form-field">
                         <label for="gender">Gender</label>
-                        <select id="gender" name="gender">
+                        <select id="gender" name="customer_gender" required>
                             <option value="">Select your gender</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
@@ -162,37 +177,31 @@
 
                     <div class="form-field">
                         <label for="email-address">Email Address</label>
-                        <input type="email" id="email-address" name="email_address" placeholder="Enter your email address" required>
+                        <input type="email" id="email-address" name="customer_email" placeholder="Enter your email address" required>
                     </div>
 
                     <div class="form-field">
                         <label for="password">Password</label>
-                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                        <input type="password" id="password" name="customer_password" placeholder="Enter your password" required>
                     </div>
 
                     <div class="form-field">
                         <label for="confirm-password">Confirm Password</label>
-                        <input type="password" id="confirm-password" name="confirm_password" placeholder="Confirm your password" required>
+                        <input type="password" id="confirm-password" name="customer_confirm_password" placeholder="Confirm your password" required>
                     </div>
 
                     <div class="form-field full-width">
                         <label for="address">Address</label>
-                        <input type="text" id="address" name="address" placeholder="Enter your address" required>
+                        <input type="text" id="address" name="customer_address" placeholder="Enter your address">
                     </div>
                 </div>
             </div>
 
             <div class="footer">
-                <button type="submit" class="complete-btn" onclick="completeSignup()">Complete</button>
+                <button type="submit" class="complete-btn">Complete</button>
                 <p class="terms">By continuing, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></p>
             </div>
         </form>
     </div>
-
-    <script>
-        function completeSignup() {
-        window.location.href = "../login.php";
-    }
-    </script>
 </body>
 </html>

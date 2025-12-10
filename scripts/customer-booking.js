@@ -215,7 +215,6 @@ document.getElementById("bookNowBtn").addEventListener("click", function () {
 
 // finalizeBooking() -> called by Confirm on review modal to show final receipt
 function finalizeBooking() {
-  // gather all the values again
   const date = document.getElementById("bookingDate").value;
   const hour = document.getElementById("timeHour").value;
   const minute = document.getElementById("timeMinute").value;
@@ -224,49 +223,77 @@ function finalizeBooking() {
   const phone = document.getElementById("customerPhone").value.trim();
   const addr = document.getElementById("customerAddress").value.trim();
 
-  const paddedHour = String(hour).padStart(0, "0");
-  const paddedMinute = String(minute).padStart(0, "0");
-  const formattedTime = `${paddedHour}:${paddedMinute} ${period}`;
-  const formattedDate = new Date(date).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  const formattedTime = `${hour}:${minute} ${period}`;
+  const formattedDate = new Date(date).toISOString().split("T")[0];
 
-  const selectedProblemElement = document.querySelector(
-    ".problem-option.selected"
-  );
-  let min = 200,
-    max = 400;
+  const selectedProblemElement = document.querySelector(".problem-option.selected");
+  let min = 200, max = 400;
   if (selectedProblemElement) {
     min = parseInt(selectedProblemElement.dataset.min || 200);
     max = parseInt(selectedProblemElement.dataset.max || 400);
   }
+
   const base = 500;
-  const minTotal = base + min;
-  const maxTotal = base + max;
-  const estimated = `${minTotal} - ${maxTotal} PHP`;
+  const estimated = `${base + min} - ${base + max} PHP`;
 
-  // populate receipt fields
-  document.getElementById("receiptRepairerName").textContent = document.getElementById("modalRepairerName").textContent;
-  document.getElementById("receiptRepairerCategory").textContent = document.getElementById("modalRepairerCategory").textContent;
-  document.getElementById("receiptRepairerPhoto").src = document.getElementById("modalRepairerPhoto").src;
-  document.getElementById("receiptRepairerPhoto").alt = document.getElementById("modalRepairerName").textContent;
-  document.getElementById("receiptDateTime").textContent = `${formattedDate} at ${formattedTime}`;
-  document.getElementById("receiptService").textContent = selectedProblemText;
-  document.getElementById("receiptContact").textContent = `${name} • ${phone}`;
-  document.getElementById("receiptPayment").textContent = selectedPaymentMethod;
-  document.getElementById("receiptTotal").textContent = estimated;
+  // ✅ DATA TO SEND TO DATABASE
+  const bookingData = {
+    repairer_name: document.getElementById("modalRepairerName").textContent,
+    category: document.getElementById("modalRepairerCategory").textContent,
+    problem: selectedProblemText,
+    booking_date: formattedDate,
+    booking_time: formattedTime,
+    customer_name: name,
+    customer_phone: phone,
+    customer_address: addr,
+    payment_method: selectedPaymentMethod,
+    estimated_price: estimated
+  };
 
-  // close review modal & booking modal, show final receipt
-  closeModal("reviewModal");
-  closeModal("bookingModal");
+  // ✅ SEND TO PHP API
+  fetch("http://localhost/WSServiceU/api/save_booking.php", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(bookingData)
+  })
+  .then(res => res.json())
+  .then(data => {
+    if (data.status === "success") {
+      console.log("Booking saved!");
 
-  document.getElementById("receiptModal").classList.add("active");
-  document.body.style.overflow = "hidden";
+      // ✅ SHOW RECEIPT AFTER SUCCESS SAVE
+      closeModal("reviewModal");
+      closeModal("bookingModal");
 
-  // Here you could also save booking to localStorage or send to server
-  // Example: localStorage.setItem('lastBooking', JSON.stringify({ ... }));
+      // --- POPULATE RECEIPT MODAL ---
+      document.getElementById("receiptRepairerName").textContent =
+        document.getElementById("modalRepairerName").textContent;
+      document.getElementById("receiptRepairerCategory").textContent =
+        document.getElementById("modalRepairerCategory").textContent;
+      document.getElementById("receiptRepairerPhoto").src =
+        document.getElementById("modalRepairerPhoto").src;
+      document.getElementById("receiptRepairerPhoto").alt =
+        document.getElementById("modalRepairerName").textContent;
+      document.getElementById("receiptDateTime").textContent =
+        `${formattedDate} at ${formattedTime}`;
+      document.getElementById("receiptService").textContent = selectedProblemText;
+      document.getElementById("receiptContact").textContent = `${name} • ${phone}`;
+      document.getElementById("receiptPayment").textContent = selectedPaymentMethod;
+      document.getElementById("receiptTotal").textContent = estimated;
+
+      document.getElementById("receiptModal").classList.add("active");
+      document.body.style.overflow = "hidden";
+
+    } else {
+      alert("Failed to save booking.");
+    }
+  })
+  .catch(err => {
+    console.error("Error:", err);
+    alert("Server error.");
+  });
 }
 
 // reuse closeModal for receipt done button

@@ -1,3 +1,8 @@
+<?php
+session_start();
+$error = isset($_GET['error']) ? $_GET['error'] : '';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -176,94 +181,89 @@
         <p>Let's get to know you!</p>
     </div>
 
-    <!-- Personal Information -->
-    <h2>Repairer Signup</h2>
+    <?php if($error != ''): ?>
+        <div class="error-message"><?php echo htmlspecialchars($error); ?></div>
+    <?php endif; ?>
 
-    <form>
+    <form action="../api/repairer_register.php" method="POST">
 
+        <!-- Personal Information -->
+        <h2>Repairer Signup</h2>
         <div class="form-grid">
-
             <div class="form-field">
                 <label>Full Name</label>
-                <input type="text" placeholder="Enter your full name" required>
+                <input type="text" name="repairer_fullName" placeholder="Enter your full name" required>
             </div>
 
             <div class="form-field">
                 <label>Phone Number</label>
-                <input type="tel" placeholder="Enter your phone number" required>
+                <input type="tel" name="repairer_phoneNum" placeholder="Enter your phone number" required>
             </div>
 
             <div class="form-field">
                 <label>Gender</label>
-                <select required>
+                <select name="repairer_gender" required>
                     <option value="">Select your gender</option>
-                    <option>Male</option>
-                    <option>Female</option>
-                    <option>Other</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
                 </select>
             </div>
 
             <div class="form-field">
                 <label>Email Address</label>
-                <input type="email" placeholder="Enter your email" required>
+                <input type="email" name="repairer_email" placeholder="Enter your email" required>
             </div>
 
             <div class="form-field">
                 <label>Password</label>
-                <input type="password" placeholder="Enter your password" required>
+                <input type="password" name="repairer_password" placeholder="Enter your password" required>
             </div>
 
             <div class="form-field">
                 <label>Confirm Password</label>
-                <input type="password" placeholder="Confirm your password" required>
+                <input type="password" name="repairer_confirm_password" placeholder="Confirm your password" required>
             </div>
 
             <div class="form-field full-width">
                 <label>Address</label>
-                <input type="text" placeholder="Enter your address" required>
+                <input type="text" name="repairer_address" placeholder="Enter your address" required>
             </div>
-
         </div>
 
         <!-- Expertise Section -->
         <h2>Select Your Expertise</h2>
         <div class="expertise-list">
-
             <div class="expertise-item">
                 <img src="../img/chip.png" alt="">
                 <label>Hardware</label>
-                <input type="checkbox">
+                <input type="checkbox" name="repairer_expertise" value="Hardware">
             </div>
-
             <div class="expertise-item">
                 <img src="../img/repairing.png" alt="">
                 <label>Plumbing</label>
-                <input type="checkbox">
+                <input type="checkbox" name="repairer_expertise" value="Plumbing">
             </div>
-
             <div class="expertise-item">
                 <img src="../img/flash.png" alt="">
                 <label>Electrical</label>
-                <input type="checkbox">
+                <input type="checkbox" name="repairer_expertise" value="Electrical">
             </div>
-
         </div>
 
-        <!-- Upload Section -->
+        <!-- Upload Section (optional) -->
         <h2>Upload Your Documents</h2>
         <p style="color:#666; margin-top:-10px;">Please upload your licenses or certifications to verify your expertise</p>
-
         <div class="upload-box">
             <label for="file-upload">
                 <img src="https://img.icons8.com/?size=100&id=59816&format=png" width="40">
                 <p>Choose a file<br><small>PDF, JPG, PNG up to 5MB</small></p>
             </label>
-            <input id="file-upload" type="file">
+            <input id="file-upload" type="file" name="repairer_documents">
         </div>
         <br>
 
-        <button type="button" class="btn" onclick="completeSignup()">Complete</button>
-
+        <button type="submit" class="btn">Complete</button>
         <p class="terms">
             By continuing, you agree to our <a href="#">Terms of Service</a> and
             <a href="#">Privacy Policy</a>.
