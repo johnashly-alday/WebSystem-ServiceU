@@ -74,6 +74,12 @@
             padding: 20px;
         }
 
+        .login-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #137594;
+        }
+
         .login-container form {
             display: flex;
             flex-direction: column;
@@ -159,6 +165,7 @@
         </div>
 
         <div class="login-container">
+            <h2>Admin Portal</h2>
             <form action="login.php" method="POST">
                 <input type="text" name="username" placeholder="Username or Email" required>
                 <input type="password" name="password" placeholder="Password" required>
