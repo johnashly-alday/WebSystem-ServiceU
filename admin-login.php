@@ -116,34 +116,6 @@
             margin-bottom: 20px;
         }
 
-        .divider {
-            border-top: 1px solid #dadde1;
-            margin: 20px 0;
-        }
-
-
-        .dont-have-account {
-            text-align: center;
-            color: #1c1e21;
-            font-size: 15px;
-        }
-
-        .sign-up-link {
-            color: #137594;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .login-admin {
-            text-align: center;
-            margin-top: 10px;
-            ;
-        }
-
-        .login-admin a {
-            color: #1c1e21;
-            font-size: 15px;
-        }
 
         @media (max-width: 1024px) {
             .main-container {
@@ -191,13 +163,6 @@
                 <input type="text" name="username" placeholder="Username or Email" required>
                 <input type="password" name="password" placeholder="Password" required>
                 <button type="submit" class="login-btn"><strong>Log In</strong></button>
-                <a href="#" class="forgot-pass">Forgot password?</a>
-
-                <div class="divider"></div>
-
-                <p class="dont-have-account">Don't have an account? <a href="choose_profile.html"
-                        class="sign-up-link">Sign Up</a></p>
-                <p class="login-admin"><a href="admin-login.php">Login as administrator</a></p>
             </form>
         </div>
     </div>
