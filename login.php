@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -187,11 +191,19 @@
         </div>
 
         <div class="login-container">
-            <form action="login.php" method="POST">
-                <input type="text" name="username" placeholder="Username or Email" required>
-                <input type="password" name="password" placeholder="Password" required>
-                <button type="submit" class="login-btn"><strong>Log In</strong></button>
-                <a href="forgot.php" class="forgot-pass">Forgot password?</a>
+            <?php
+                if(isset($_SESSION['error'])) {
+                    echo '<div class="error">'.$_SESSION['error'].'</div>';
+                    unset($_SESSION['error']);
+                }
+            ?>
+            <form action="./api/backend_login.php" method="POST">
+                <form action="backend_login.php" method="POST">
+                    <input type="text" name="username" placeholder="Username or Email" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <button type="submit" class="login-btn"><strong>Log In</strong></button>
+            </form>
+
 
                 <div class="divider"></div>
 

@@ -2,7 +2,7 @@
     header("Content-Type: application/json");
     include("conn.php"); 
 
-    $data = json_decode(file_get_contents("php://input"), true);
+    $data = $_POST; 
 
     $requiredFields = ["customer_fullName", "customer_phoneNum", "customer_gender", "customer_email", "customer_password"];
     foreach ($requiredFields as $field) {
